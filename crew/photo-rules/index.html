@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">
+<title>Liquid Assets Photo Rules</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;600&display=swap">
+</head><body><style>
+/* Layout: a jobsite card. One rule per row, bad shot left, good shot right, big verdict stamps. Reads on a phone in a truck. */
+:root {
+  --bg: #f3f5f7; --card: #ffffff; --fg: #15202b; --mute: #5b6b7a; --line: #d6dde4;
+  --pool: #0f6fae; --bad: #c0392b; --good: #1f8a4c; --bad-bg: #fbe9e7; --good-bg: #e6f4ec;
+  --display: "Barlow Condensed", "Arial Narrow", Impact, sans-serif; --body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #0e151c; --card: #17222c; --fg: #eef3f7; --mute: #9fb0bf; --line: #2a3a48; --pool: #5ab3ea; --bad: #ff7b6b; --good: #4fcf84; --bad-bg: #3a1f1c; --good-bg: #163325; color-scheme: dark } }
+:root[data-theme="dark"] { --bg: #0e151c; --card: #17222c; --fg: #eef3f7; --mute: #9fb0bf; --line: #2a3a48; --pool: #5ab3ea; --bad: #ff7b6b; --good: #4fcf84; --bad-bg: #3a1f1c; --good-bg: #163325; color-scheme: dark }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 400 17px/1.5 var(--body); padding-block: 24px 48px; padding-inline: 16px; }
+.wrap { max-width: 900px; margin-inline: auto; display: grid; gap: 22px; }
+header h1 { font: 700 clamp(2.2rem, 7vw, 3.4rem)/1 var(--display); text-transform: uppercase; letter-spacing: .01em; margin: 0; color: var(--pool); text-wrap: balance; }
+header p { margin: 8px 0 0; color: var(--mute); max-width: 60ch; }
+.short { background: var(--card); border: 1px solid var(--line); border-left: 6px solid var(--pool); padding: 16px 18px; display: grid; gap: 6px; }
+.short strong { font: 700 1.05rem var(--display); text-transform: uppercase; letter-spacing: .06em; color: var(--pool); }
+.short ol { margin: 0; padding-left: 22px; display: grid; gap: 4px; font-weight: 600; }
+.part { display: grid; gap: 6px; margin-top: 10px; }
+.part h2 { margin: 0; font: 700 clamp(1.6rem, 5vw, 2.2rem)/1 var(--display); text-transform: uppercase; letter-spacing: .02em; }
+.part p { margin: 0; color: var(--mute); max-width: 60ch; }
+.rule { background: var(--card); border: 1px solid var(--line); overflow: hidden; }
+.rule h3 { margin: 0; padding: 14px 18px 10px; font: 700 1.45rem/1.1 var(--display); text-transform: uppercase; letter-spacing: .02em; border-bottom: 1px solid var(--line); }
+.pair { display: grid; grid-template-columns: 1fr 1fr; }
+.shot { display: grid; grid-template-rows: auto auto; min-width: 0; margin: 0; }
+.shot img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; max-width: 100%; }
+.shot figcaption { padding: 10px 14px 14px; font-size: .95rem; display: grid; gap: 4px; }
+.stamp { font: 700 .95rem/1 var(--display); text-transform: uppercase; letter-spacing: .12em; padding: 5px 10px; width: max-content; }
+.bad .stamp { background: var(--bad-bg); color: var(--bad); }
+.good .stamp { background: var(--good-bg); color: var(--good); }
+.shot p { margin: 0; color: var(--mute); }
+.tip { margin: 0; padding: 12px 18px 16px; border-top: 1px solid var(--line); font-weight: 600; }
+.foot { color: var(--mute); font-size: .9rem; text-align: center; }
+@media (max-width: 560px) { .pair { grid-template-columns: 1fr; } .bad { border-bottom: 1px solid var(--line); } }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Job photos: what helps, what doesn't</h1>
+    <p>Every photo you take does one of two jobs. It either tells the office what's on site so we can order parts, file warranty and bill right, or it goes on the website and sells the next job. Here's what each one needs to look like.</p>
+  </header>
+
+  <section class="short">
+    <strong>The short version</strong>
+    <ol>
+      <li>Wipe the lens on your shirt.</li>
+      <li>Every piece of equipment: one square-on, in-focus shot of the label. Model and serial readable.</li>
+      <li>Show the problem: the code on the display, the leak, the broken part. Then the fix.</li>
+      <li>One wide shot of the whole pad before you leave.</li>
+      <li>For the website: phone sideways, level, step back, sun behind you, nobody in it.</li>
+      <li>Everything goes on the Skimmer work order the same day.</li>
+    </ol>
+  </section>
+
+  <div class="part">
+    <h2>Part 1: Photos for the office</h2>
+    <p>These never go public. They're how we order the right part the first time, file the warranty claim, and prove what we did.</p>
+  </div>
+
+  <section class="rule">
+    <h3>Labels: square-on, in focus, the whole label</h3>
+    <div class="pair">
+      <figure class="shot bad"><img src="img/bad-label.jpg" alt="Pump label shot at an angle with half of it out of frame"><figcaption><span class="stamp">Doesn't help</span><p>Angled, half cut off. We can read the brand and nothing else. No model, no serial, no claim.</p></figcaption></figure>
+      <figure class="shot good"><img src="img/good-label.jpg" alt="Pentair IntelliFlo VSF label, straight on and readable"><figcaption><span class="stamp">This</span><p>Straight on, fills the frame, every line readable. We can order parts and file warranty from this one photo.</p></figcaption></figure>
+    </div>
+    <p class="tip">Pump, filter, heater, salt cell, automation board, cleaner. One label photo each, every time you're at a new pool. Wipe the label first if it's dirty.</p>
+  </section>
+
+  <section class="rule">
+    <h3>Show the problem, then the fix</h3>
+    <div class="pair">
+      <figure class="shot bad"><img src="img/bad-blur.jpg" alt="Blurry close-up with nothing identifiable"><figcaption><span class="stamp">Doesn't help</span><p>Nobody can tell what this is. If it's blurry on your screen, it's blurry on ours. Take it again.</p></figcaption></figure>
+      <figure class="shot good"><img src="img/good-oldpart.jpg" alt="Open pump housing packed with dead insects and debris"><figcaption><span class="stamp">This</span><p>You can see exactly why the pump quit. That's the photo that goes on the invoice and ends the argument.</p></figcaption></figure>
+    </div>
+    <p class="tip">Before you touch it: shoot what you found. After: shoot the new part in place. Old part next to new part is even better.</p>
+  </section>
+
+  <section class="rule">
+    <h3>Control panels: the display and the whole face</h3>
+    <div class="pair">
+      <figure class="shot bad"><img src="img/bad-closeup.jpg" alt="Close-up of wiring inside a box with a hand in the way"><figcaption><span class="stamp">Doesn't help</span><p>Wires and a thumb. We can't tell what panel it is or what it's doing.</p></figcaption></figure>
+      <figure class="shot good"><img src="img/good-code.jpg" alt="Pentair EasyTouch control panel, whole face with the display readable"><figcaption><span class="stamp">This</span><p>Whole panel, display readable, breakers in frame. Any error code or status is right there.</p></figcaption></figure>
+    </div>
+    <p class="tip">If the screen shows a code, get close enough to read it, then step back for the whole panel. Two photos.</p>
+  </section>
+
+  <section class="rule">
+    <h3>The whole pad before you leave</h3>
+    <div class="pair">
+      <figure class="shot bad"><img src="img/bad-pad.jpg" alt="Close-up of pump plumbing in the weeds"><figcaption><span class="stamp">Doesn't help</span><p>One valve and some weeds. Is there a heater? A salt cell? What size filter? Can't tell.</p></figcaption></figure>
+      <figure class="shot good"><img src="img/good-pad.jpg" alt="Filter and pump on the pad, shot from the front"><figcaption><span class="stamp">This</span><p>Back up until every piece of equipment is in the frame. Now the office knows what's there before anyone quotes anything.</p></figcaption></figure>
+    </div>
+    <p class="tip">Ten feet back, square to the pad. This one shot saves a second trip more than any other.</p>
+  </section>
+
+  <div class="part">
+    <h2>Part 2: Photos for the website</h2>
+    <p>These go on liquidassetsms.com and our socials. Only take them when the pool looks good. Thirty extra seconds here is the difference between a photo we can use and one we can't.</p>
+  </div>
+
+  <section class="rule">
+    <h3>Phone sideways. Hold it level. Step back.</h3>
+    <div class="pair">
+      <figure class="shot bad"><img src="img/bad-tilt.jpg" alt="Tilted, tall shot of a pool shell"><figcaption><span class="stamp">Can't use</span><p>Tilted and tall. The water looks like it's running out of the pool.</p></figcaption></figure>
+      <figure class="shot good"><img src="img/good-angle.jpg" alt="Level landscape shot of a pool from the corner of the deck"><figcaption><span class="stamp">This</span><p>Landscape, level, shot from a corner so you see two sides of the pool and the deck.</p></figcaption></figure>
+    </div>
+    <p class="tip">Corner of the deck, phone at chest height, waterline straight across. That's the shot.</p>
+  </section>
+
+  <section class="rule">
+    <h3>Sun behind you. Watch the shadows.</h3>
+    <div class="pair">
+      <figure class="shot bad"><img src="img/bad-shadow.jpg" alt="Pool with hard shadows and glare across the water"><figcaption><span class="stamp">Can't use</span><p>Noon sun, hard shadows across the water, glare off the surface.</p></figcaption></figure>
+      <figure class="shot good"><img src="img/good-light.jpg" alt="Pool at dusk with the fire bowl and lights on"><figcaption><span class="stamp">This</span><p>Late light, fire bowl on, water lights on. This one sells pools.</p></figcaption></figure>
+    </div>
+    <p class="tip">There at dusk and the lights work? Turn them on and take the picture. Every time.</p>
+  </section>
+
+  <section class="rule">
+    <h3>Nobody and nothing in the shot</h3>
+    <div class="pair">
+      <figure class="shot bad"><img src="img/bad-people.jpg" alt="Crew working in a drained pool with buckets and a cooler"><figcaption><span class="stamp">Can't use</span><p>Crew, buckets, cooler. We can't put people on the website without asking them.</p></figcaption></figure>
+      <figure class="shot good"><img src="img/good-wide.jpg" alt="Finished pool with a clean deck and nothing in the way"><figcaption><span class="stamp">This</span><p>Pull the vacuum, move the jugs, kick the hose out of frame, then shoot.</p></figcaption></figure>
+    </div>
+    <p class="tip">Floats, dog toys, the customer's kids, your truck: all out of the frame. Before and after from the same corner, same height.</p>
+  </section>
+
+  <p class="foot">Liquid Assets MS · Questions, ask Scott. Photos go on the Skimmer work order the same day.</p>
+</div>
+
+</body></html>
